@@ -23,8 +23,8 @@ public class GitHubProvider {
                 .build();
         try (Response response = client.newCall(request).execute()) {
             String string = response.body().string();
-//            String token = string.split("&")[0].split("=")[1];
-            String token = "99a17971365890056f782150c2065a908e333e8a";
+            String token = string.split("&")[0].split("=")[1];
+//            String token = "99a17971365890056f782150c2065a908e333e8a";
             return token;
         } catch (Exception e) {
             e.printStackTrace();
