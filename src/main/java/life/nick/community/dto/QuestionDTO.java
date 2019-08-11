@@ -1,27 +1,25 @@
-package life.nick.community.model;
+package life.nick.community.dto;
 
+import life.nick.community.model.User;
 import lombok.Data;
 
 /**
  *@author lijing
- *@date 2019/7/26
+ *@date 2019/8/11
  **/
 @Data
-public class Question {
-
+public class QuestionDTO {
     private Integer id;
 
     private String title;
 
     private String description;
 
-    private String tag;
-
     private Long gmtCreate;
 
     private Long gmtModified;
 
-    private Integer creator;
+    private String creator;
 
     private Integer commentCount;
 
@@ -29,6 +27,8 @@ public class Question {
 
     private Integer likeCount;
 
+    private String tag;
 
+    private User user;
 }
 

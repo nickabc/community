@@ -49,40 +49,46 @@
     </div>
 
 </nav>
+
 <div class="container-fluid main">
     <div class="row">
-        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12"></div>
-        <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起</h2>
-        <hr>
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+            <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起</h2>
+            <hr>
 
-        <form action="/publish" method="post">
-            <div class="form-group">
-                <label for="title">问题标题 (简单扼要):</label>
-                <input type="text" class="form-control" id="title" name="title" th:value="${title}" placeholder="问题标题......">
-            </div>
-            <div class="form-group">
-                <label for="description">问题补充 (必填,请参照右侧提示):</label>
-                <textarea name="description" id="description" class="form-control" col="30" rows="10" th:value="${description}"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="tag">添加标签:</label>
-                <input type="text" class="form-control" id="tag" name="tag" placeholder="输入标签,以,号分隔" th:value="${tag}">
-            </div>
-
-            <div class="container-fluid main">
-                <div class="row">
-                    <div class="alert alert-danger col-lg-9 col-md-12 col-sm-12 col-xs-12" th:text="${error}" th:if="${error != null}"></div>
-                    <div class="col-log-3 col-md-12  col-sm-12 col-xs-12">
-                        <button type="submit" class="btn btn-success btn-publish">
-                            发布
-                        </button>
-                    </div>
-
+            <form action="/publish" method="post">
+                <div class="form-group">
+                    <label for="title">问题标题 (简单扼要):</label>
+                    <input type="text" class="form-control" id="title" name="title" th:value="${title}"
+                           placeholder="问题标题......">
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="description">问题补充 (必填,请参照右侧提示):</label>
+                    <textarea name="description" id="description" class="form-control" col="30" rows="10"
+                              th:text="${description}"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="tag">添加标签:</label>
+                    <input type="text" class="form-control" id="tag" name="tag" placeholder="输入标签,以,号分隔"
+                           th:value="${tag}">
+                </div>
 
-
-        </form>
+                <div class="container-fluid main">
+                    <div class="row">
+                        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                            <div class="alert alert-danger col-lg-12 col-md-12 col-sm-12 col-xs-12" th:text="${error}"
+                                 th:if="${error != null}">
+                            </div>
+                        </div>
+                        <div class="col-log-3 col-md-12  col-sm-12 col-xs-12">
+                            <button type="submit" class="btn btn-success btn-publish">
+                                发布
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
         <div class="col-log-3 col-md-12  col-sm-12 col-xs-12">
             <h3>问题发起指南</h3>
             ·问题标题：请用简洁的语言描述您发布的问题，不超过20字<br>
