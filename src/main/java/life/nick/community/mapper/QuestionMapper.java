@@ -20,6 +20,9 @@ public interface QuestionMapper {
             + "values (#{title},#{description},#{gmtCreate},#{gmtModified},#{creator}, #{tag})")
     void createQuestion(Question question);
 
-    @Select("select * from question")
-    List<Question> list();
+    @Select("select * from question limit #{offSet},#{size}")
+    List<Question> list(@Param("offSet") Integer offSet, @Param("size") Integer size);
+
+    @Select("select count(1) from question")
+    Integer count();
 }

@@ -1,5 +1,7 @@
 package life.nick.community.service;
 
+import com.sun.scenario.effect.Offset;
+import life.nick.community.dto.PaginationDTO;
 import life.nick.community.dto.QuestionDTO;
 import life.nick.community.mapper.QuestionMapper;
 import life.nick.community.mapper.UserMapper;
@@ -26,8 +28,8 @@ public class QuestionService {
     @Autowired
     QuestionMapper questionMapper;
 
-    public List<QuestionDTO> list() {
-        List<Question> questionList = questionMapper.list();
+    public List<QuestionDTO> list(Integer offSet, Integer size) {
+        List<Question> questionList = questionMapper.list(offSet,size);
         if (questionList == null) {
             return Collections.EMPTY_LIST;
         }
@@ -40,6 +42,22 @@ public class QuestionService {
             questionDTOList.add(questionDTO);
         }
         return questionDTOList;
+    }
+
+    /**
+     * 获取分页数据
+     * @return
+     * @param page
+     * @param size
+     */
+    public PaginationDTO listAll(Integer page, Integer size) {
+        PaginationDTO paginationDTO = new PaginationDTO();
+        Integer offSet = (page-1)*size;
+        List<QuestionDTO> questionDTOList = this.list(offSet,size);
+        paginationDTO.setQuestionDTOList(questionDTOList);
+        Integer total = questionMapper.count();
+        paginationDTO.setPagination(total,page,size);
+        return paginationDTO;
     }
 }
 
